@@ -18,8 +18,8 @@ endif
 # src:dest pair is the first one to match the same dest"
 #$(1): the src:dest pair
 define check-product-copy-files
-$(if $(filter %.apk, $(1)),$(error \
-    Prebuilt apk found in PRODUCT_COPY_FILES: $(1), use BUILD_PREBUILT instead!))
+#$(if $(filter %.apk, $(1)),$(error \
+#    Prebuilt apk found in PRODUCT_COPY_FILES: $(1), use BUILD_PREBUILT instead!))
 endef
 unique_product_copy_files_destinations :=
 $(foreach cf,$(PRODUCT_COPY_FILES), \
@@ -169,6 +169,7 @@ $(INSTALLED_BUILD_PROP_TARGET): $(BUILDINFO_SH) $(INTERNAL_BUILD_ID_MAKEFILE) $(
 			TARGET_CPU_ABI="$(TARGET_CPU_ABI)" \
 			TARGET_CPU_ABI2="$(TARGET_CPU_ABI2)" \
 			TARGET_AAPT_CHARACTERISTICS="$(TARGET_AAPT_CHARACTERISTICS)" \
+			$(PRODUCT_BUILD_PROP_OVERRIDES) \
 	        bash $(BUILDINFO_SH) > $@
 	$(hide) if [ -f $(TARGET_DEVICE_DIR)/system.prop ]; then \
 	          cat $(TARGET_DEVICE_DIR)/system.prop >> $@; \
