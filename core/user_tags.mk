@@ -501,5 +501,6 @@ GRANDFATHERED_USER_MODULES += \
 	vold \
 	wdsclient \
 	wpa_supplicant \
+	wpa_supplicant.conf \
 	yuv420sp2rgb \
 	zipalign
